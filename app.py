@@ -28,5 +28,6 @@ st.line_chart(vix_data["Close"])
 # Fear & Greed Index 출력
 st.subheader("CNN 공포 & 탐욕 지수")
 fg_index = get_fear_greed_index()
+st.write(fg_index)
 st.metric(label="현재 탐욕 지수", value=fg_index)
 
