@@ -9,14 +9,15 @@ vix_data = vix.history(period="1mo")
 
 # 공포탐욕지수 스크래핑 함수
 def get_fear_greed_index():
+    url = "https://edition.cnn.com/markets/fear-and-greed"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    
     try:
-        url = "https://edition.cnn.com/markets/fear-and-greed"
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        fg_value = soup.find("span", class_="market-fng-gauge__dial-number-value").text
+        fg_value = soup.find("span", class_="market-fng-gauge__dial-number-value").text.strip()
         return fg_value
     except:
-        return "데이터 로드 실패"
+        return "지수 추출 실패"
 
 # Streamlit UI
 st.title("📊 시장 심리 대시보드")
