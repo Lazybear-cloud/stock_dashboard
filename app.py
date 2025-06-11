@@ -32,3 +32,6 @@ def get_fear_greed_index_history(start_date="2020-01-01"):
     except Exception as e:
         print("JSON decoding error:", e)
         return pd.DataFrame()
+df = get_fear_greed_index_history("2025-01-01")  # 사용하실 기간 지정
+st.line_chart(df.set_index("date")["fg"])
+st.write("📊 최신 공포탐욕지수:", df["fg"].iloc[-1])
