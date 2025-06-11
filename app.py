@@ -8,17 +8,6 @@ from bs4 import BeautifulSoup
 vix = yf.Ticker("^VIX")
 vix_data = vix.history(period="1mo")
 
-# 공포탐욕지수 스크래핑 함수
-def get_fear_greed_index():
-    url = "https://edition.cnn.com/markets/fear-and-greed"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    
-    try:
-        fg_value = soup.find("span", class_="market-fng-gauge__dial-number-value").text.strip()
-        return fg_value
-    except:
-        return "지수 추출 실패"
 
 # Streamlit UI
 st.title("📊 시장 심리 대시보드")
@@ -27,10 +16,21 @@ st.title("📊 시장 심리 대시보드")
 st.subheader("VIX (공포 지수)")
 st.line_chart(vix_data["Close"])
 
-# Fear & Greed Index 출력
-st.subheader("CNN 공포 & 탐욕 지수")
-fg_index = get_fear_greed_index()
-st.write("ㅇㅇㅇ", fg_index)
-st.metric(label="현재 탐욕 지수", value=fg_index)
 
-st.markdown(f"### 😬 현재 공포탐욕지수: **{fg_index}**")
+
+
+
+
+def get_fear_greed_index_history(start_date="2020-01-01"):
+    url = f"https://production.dataviz.cnn.io/index/fearandgreed/graphdata/{start_date}"
+    response = requests.get(url)
+    data = response.json().get("fear_and_greed_historical", {}).get("data", [])
+    df = pd.DataFrame([
+        {"date": pd.to_datetime(item["x"], unit="ms"), "fg": item["y"]}
+        for item in data
+    ])
+    return df
+
+df = get_fear_greed_index_history("2025-01-01")  # 사용하실 기간 지정
+st.line_chart(df.set_index("date")["fg"])
+st.write("📊 최신 공포탐욕지수:", df["fg"].iloc[-1])
