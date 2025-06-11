@@ -6,8 +6,13 @@ from bs4 import BeautifulSoup
 
 # VIX 데이터
 vix = yf.Ticker("^VIX")
-vix_data = vix.history(period="1mo")
+vix_data = vix.history(period="1mo", interval="1d")
 
+sp500 = yf.Ticker("^GSPC")
+sp500_data = sp500.history(period="1mo")
+
+nasdaq = yf.Ticker("^IXIC")
+nasdaq_data = nasdaq.history(period="1mo")
 
 # Streamlit UI
 st.title("📊 시장 심리 대시보드")
