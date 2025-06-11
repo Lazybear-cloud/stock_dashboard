@@ -32,3 +32,4 @@ fg_index = get_fear_greed_index()
 st.write("ㅇㅇㅇ", fg_index)
 st.metric(label="현재 탐욕 지수", value=fg_index)
 
+st.markdown(f"### 😬 현재 공포탐욕지수: **{fg_index}**")
