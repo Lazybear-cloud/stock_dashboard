@@ -13,7 +13,7 @@ def get_fear_greed_index():
         url = "https://edition.cnn.com/markets/fear-and-greed"
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
-        fg_value = soup.find("div", class_="market-fng-gauge__dial-number-value").text
+        fg_value = soup.find("span", class_="market-fng-gauge__dial-number-value").text
         return fg_value
     except:
         return "데이터 로드 실패"
