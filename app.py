@@ -3,7 +3,9 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objs as go
 from datetime import timedelta
-
+st.set_page_config(page_title="📈 투자 대시보드", page_icon="💹", layout="wide")
+st.title("💹 투자 통합 대시보드")
+st.write("왼쪽 사이드바에서 분석 항목을 선택해 주세요 😊")
 st.set_page_config(layout="wide")
 
 # 📌 타이틀
