@@ -53,8 +53,6 @@ with col1:
     # 그래프 레이아웃 설정
     fig.update_layout(
         title=f"VIX 공포 지수 : {latest_value}",
-        xaxis_title="날짜",
-        yaxis_title="지수",
         height=500,
         template="plotly_white"
     )
