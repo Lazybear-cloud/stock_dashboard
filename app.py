@@ -4,7 +4,12 @@ import pandas as pd
 import plotly.graph_objs as go
 from datetime import timedelta
 
-st.set_page_config(page_title="📊 홈", layout="wide")
+st.set_page_config(
+    page_title="📉 공포 지수 대시보드",  # 브라우저 탭 이름
+    page_icon="📉",                   # 아이콘
+    layout="wide",                    # 와이드 모드
+    initial_sidebar_state="expanded" # 사이드바 펼친 상태로 시작
+)
 st.title("📈 메인 페이지")
 
 st.sidebar.success("👈 왼쪽 메뉴에서 페이지를 선택하세요!")
