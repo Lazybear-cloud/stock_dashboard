@@ -23,10 +23,9 @@ start_date, end_date = st.slider(
     "📅 표시할 날짜 범위 선택",
     min_value=min_date,
     max_value=max_date,
-    value=(default_start, default_end),
+    value=(max_date - timedelta(days=365), max_date),
     format="YYYY-MM-DD"
 )
-
 # ✅ 슬라이더 값 → datetime64로 변환 (비교를 위해)
 start_ts = pd.to_datetime(start_date)
 end_ts = pd.to_datetime(end_date)
