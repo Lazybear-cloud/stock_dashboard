@@ -3,6 +3,7 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 from bs4 import BeautifulSoup
+import matplotlib.pyplot as plt
 
 # VIX 데이터
 vix = yf.Ticker("^VIX")
