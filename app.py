@@ -4,8 +4,10 @@ import pandas as pd
 import plotly.graph_objs as go
 from datetime import timedelta
 
-st.set_page_config(page_title="메인 대시보드", layout="wide")
-st.title("📊 메인 페이지입니다")
+st.set_page_config(page_title="📊 홈", layout="wide")
+st.title("📈 메인 페이지")
+
+st.sidebar.success("👈 왼쪽 메뉴에서 페이지를 선택하세요!")
 
 st.sidebar.title("📁 페이지 선택")
 page = st.sidebar.selectbox("원하는 페이지를 고르세요", ["홈", "차트", "요약"])
