@@ -33,7 +33,7 @@ start_date, end_date = st.slider(
 start_ts = pd.to_datetime(start_date)
 end_ts = pd.to_datetime(end_date)
 
-st.wirite(start_ts)
+st.write(start_ts)
 
 # ✅ 날짜 필터링
 filtered_data = vix_data[(vix_data["Date"] >= start_ts) & (vix_data["Date"] <= end_ts)]
