@@ -57,7 +57,7 @@ with col1:
     )
 
     fig.update_layout(
-        title=f"VIX 공포 지수 ({start_date} ~ {end_date})",
+        title=f"VIX 공포 지수 : {latest_value}",
         xaxis_title="날짜",
         yaxis_title="지수",
         height=500,
@@ -65,11 +65,3 @@ with col1:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-with col2:
-    st.subheader("📌 최신 정보")
-    st.metric(label="VIX", value=f"{latest_value}")
-    st.write(f"📅 기준일: **{latest_date}**")
-    st.write(f"📊 평균값: **{mean_value:.2f}**")
-
-# 👉 표로도 출력 가능
-st.dataframe(filtered_data)
