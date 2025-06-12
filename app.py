@@ -27,6 +27,9 @@ mean_value = vix_data["Close"].mean()
 latest_value = vix_data["Close"].iloc[-1]
 latest_date = vix_data.index[-1].date()
 
+# ✅ 2컬럼 레이아웃 구성
+col1, col2 = st.columns([2, 1])  # 왼쪽(col1)이 더 넓게
+
 with col1
     # ✅ Plotly 그래프 생성
     fig = go.Figure()
