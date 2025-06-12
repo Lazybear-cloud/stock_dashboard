@@ -40,7 +40,7 @@ fig.add_trace(go.Scatter(
     x=vix_data.index,
     y=vix_data["Close"],
     name="VIX",
-    line=dict(color="blue")
+    line=dict(color="green")
 ))
 
 # 평균선 추가
