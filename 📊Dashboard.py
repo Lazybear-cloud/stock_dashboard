@@ -59,7 +59,7 @@ with col1:
         x=filtered_data["Date"],
         y=filtered_data["Close"],
         name="VIX",
-        line=dict(color="blue")
+        line=dict(color="skyblue")
     ))
 
     fig.add_hline(
