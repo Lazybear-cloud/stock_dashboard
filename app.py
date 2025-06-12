@@ -17,9 +17,6 @@ sp500_data = sp500.history(period="1mo")
 nasdaq = yf.Ticker("^IXIC")
 nasdaq_data = nasdaq.history(period="1mo")
 
-# Streamlit UI
-st.title("📊 시장 심리 대시보드")
-
 
 chart = alt.Chart(vix_data.reset_index()).mark_line().encode(
     x='Date:T',
