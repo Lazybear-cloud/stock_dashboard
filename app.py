@@ -35,8 +35,8 @@ start_date, end_date = st.slider(
 
 # ✅ 선택된 날짜 범위로 필터링
 filtered_data = vix_data[
-    (vix_data["Date"] >= pd.to_datetime(start_date)) &
-    (vix_data["Date"] <= pd.to_datetime(end_date))
+    (vix_data["Date"] >= pd.Timestamp(start_date)) &
+    (vix_data["Date"] <= pd.Timestamp(end_date))
 ]
 
 
