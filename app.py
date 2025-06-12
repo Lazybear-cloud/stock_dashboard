@@ -4,6 +4,8 @@ import pandas as pd
 import plotly.graph_objs as go
 from datetime import timedelta
 
+st.set_page_config(layout="wide")
+
 # 📌 타이틀
 st.title("📉 VIX (공포 지수) 시각화 대시보드")
 
