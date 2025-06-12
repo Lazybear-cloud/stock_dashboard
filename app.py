@@ -18,7 +18,7 @@ nasdaq_data = nasdaq.history(period="1mo")
 st.title("📊 시장 심리 대시보드")
 
 # VIX 시각화
-st.subheader(f"VIX (공포 지수):{vix_data["Close"].iloc[-1]})
+st.subheader(f"VIX (공포 지수):{vix_data["Close"].iloc[-1]}")
 st.line_chart(vix_data["Close"])
 
 
