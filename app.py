@@ -10,9 +10,7 @@ st.title("📉 VIX (공포 지수) 시각화 대시보드")
 # ✅ VIX 데이터 로딩
 vix = yf.Ticker("^VIX")
 vix_data = vix.history(period="max", interval="1d").round(2).reset_index()
-
-# ✅ Date 컬럼 타입 확실히 datetime64로 변환
-vix_data["Date"] = pd.to_datetime(vix_data["Date"], errors='coerce')
+vix_data["Date"] = pd.to_datetime(vix_data["Date"]).dt.date
 
 # ✅ 필터링 가능한 범위 설정
 min_date = vix_data["Date"].min().to_pydatetime().date()
@@ -37,7 +35,7 @@ st.write(start_ts)
 st.dataframe(vix_data)
 
 # ✅ 날짜 필터링
-filtered_data = vix_data[(vix_data["Date"] >= start_ts) & (vix_data["Date"] <= end_ts)]
+filtered_data = vix_data[(vix_data["Date"] >= start_date) & (vix_data["Date"] <= end_date)]
 
 # ✅ 평균 및 최신 데이터 계산
 mean_value = filtered_data["Close"].mean()
