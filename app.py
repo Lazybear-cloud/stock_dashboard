@@ -8,6 +8,9 @@ st.set_page_config(page_title="📈 투자 대시보드", page_icon="💹", layo
 st.title("💹 투자 통합 대시보드")
 st.write("왼쪽 사이드바에서 분석 항목을 선택해 주세요 😊")
 
+st.sidebar.title("📁 페이지 선택")
+page = st.sidebar.selectbox("원하는 페이지를 고르세요", ["홈", "차트", "요약"])
+
 # 📌 타이틀
 st.title("📉 VIX (공포 지수) 시각화 대시보드")
 
@@ -15,6 +18,7 @@ st.title("📉 VIX (공포 지수) 시각화 대시보드")
 vix = yf.Ticker("^VIX")
 vix_data = vix.history(period="max", interval="1d").round(2).reset_index()
 vix_data["Date"] = pd.to_datetime(vix_data["Date"]).dt.date  # 시간 제거하여 date만 남김
+
 
 # ✅ 필터링 가능한 범위 설정
 min_date = vix_data["Date"].min()
