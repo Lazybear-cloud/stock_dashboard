@@ -7,10 +7,6 @@ import matplotlib.pyplot as plt
 import altair as alt
 import plotly.graph_objs as go
 
-# VIX 데이터
-vix = yf.Ticker("^VIX")
-vix_data = vix.history(period="max", interval="1d").round(2)
-
 sp500 = yf.Ticker("^GSPC")
 sp500_data = sp500.history(period="1mo")
 
@@ -53,7 +49,6 @@ fig.add_hline(
 
 # 그래프 레이아웃 설정
 fig.update_layout(
-    title="VIX 공포 지수 (전체 기간)",
     xaxis_title="날짜",
     yaxis_title="지수",
     height=500,
