@@ -28,7 +28,7 @@ vix_data["Date"] = pd.to_datetime(vix_data["Date"]).dt.date  # 시간 제거하�
 # ✅ 필터링 가능한 범위 설정
 min_date = vix_data["Date"].min()
 max_date = vix_data["Date"].max()
-default_start = max_date - timedelta(days=365)
+default_start = min_date
 default_end = max_date
 
 # ✅ 날짜 슬라이더 (모두 date 타입)
