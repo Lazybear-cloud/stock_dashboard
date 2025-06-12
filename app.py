@@ -18,7 +18,7 @@ st.title("📉 VIX (공포 지수) 시각화 대시보드")
 
 # ✅ VIX 데이터 불러오기
 vix = yf.Ticker("^VIX")
-vix_data = vix.history(period="max", interval="1d").round(2)
+vix_data = vix.history(period="max", interval="1d").round(2).reset_index()
 
 # ✅ 날짜 슬라이더 (기본: 최근 1년)
 min_date = vix_data["Date"].min().date()
