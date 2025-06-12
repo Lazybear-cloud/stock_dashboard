@@ -5,19 +5,12 @@ import plotly.graph_objs as go
 from datetime import timedelta
 
 st.set_page_config(
-    page_title="📉 공포 지수 대시보드",  # 브라우저 탭 이름
-    page_icon="📉",                   # 아이콘
-    layout="wide",                    # 와이드 모드
-    initial_sidebar_state="expanded" # 사이드바 펼친 상태로 시작
+    page_icon="📉",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
-st.title("📈 메인 페이지")
+st.sidebar.success("☝ 메뉴에서 페이지를 선택하세요!")
 
-st.sidebar.success("👈 왼쪽 메뉴에서 페이지를 선택하세요!")
-
-
-
-# 📌 타이틀
-st.title("📉 VIX (공포 지수) 시각화 대시보드")
 
 # ✅ VIX 데이터 로딩
 vix = yf.Ticker("^VIX")
@@ -34,8 +27,8 @@ default_end = max_date
 # ✅ 날짜 슬라이더 (모두 date 타입)
 start_date, end_date = st.slider(
     "📅 표시할 날짜 범위 선택",
-    min_value=min_date,
-    max_value=max_date,
+   # min_value=min_date,
+    #max_value=max_date,
     value=(default_start, default_end),
     format="YYYY-MM-DD"
 )
