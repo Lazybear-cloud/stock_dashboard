@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 # VIX 데이터
 vix = yf.Ticker("^VIX")
-vix_data = vix.history(period="1mo", interval="1d")
+vix_data = vix.history(period="max", interval="1d")
 
 sp500 = yf.Ticker("^GSPC")
 sp500_data = sp500.history(period="1mo")
@@ -22,21 +22,23 @@ st.subheader("VIX (공포 지수)")
 st.line_chart(vix_data["Close"])
 
 
-def get_fear_greed_index_history(start_date="2020-01-01"):
-    url = f"https://production.dataviz.cnn.io/index/fearandgreed/graphdata/{start_date}"
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
-    
-    try:
-        data = response.json().get("fear_and_greed_historical", {}).get("data", [])
-        df = pd.DataFrame([
-            {"date": pd.to_datetime(item["x"], unit="ms"), "fg": item["y"]}
-            for item in data
-        ])
-        return df
-    except Exception as e:
-        print("JSON decoding error:", e)
-        return pd.DataFrame()
-df = get_fear_greed_index_history("2025-01-01")  # 사용하실 기간 지정
-st.line_chart(df.set_index("date")["fg"])
-st.write("📊 최신 공포탐욕지수:", df["fg"].iloc[-1])
+
+one_year_ago = pd.Timestamp.today() - pd.Timedelta(days=365)
+vix_last_year = vix_data[vix_data.index >= one_year_ago]
+
+
+# 날짜 범위 선택 슬라이더
+start_date = st.date_input("시작 날짜", one_year_ago.date())
+end_date = st.date_input("종료 날짜", vix_data.index[-1].date())
+
+# 선택된 범위로 필터링
+filtered_data = vix_data.loc[start_date:end_date]
+
+# 그래프 출력
+st.line_chart(filtered_data["Close"])
+
+
+
+
+
+
