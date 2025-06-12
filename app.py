@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 # VIX 데이터
 vix = yf.Ticker("^VIX")
-vix_data = vix.history(period="max", interval="1d").around(2)
+vix_data = vix.history(period="max", interval="1d").round(2)
 
 sp500 = yf.Ticker("^GSPC")
 sp500_data = sp500.history(period="1mo")
