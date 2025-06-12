@@ -20,6 +20,9 @@ st.title("📉 VIX (공포 지수) 시각화 대시보드")
 vix = yf.Ticker("^VIX")
 vix_data = vix.history(period="max", interval="1d").round(2).reset_index()
 
+# ✅ 날짜 컬럼 타입 강제 변환
+vix_data["Date"] = pd.to_datetime(vix_data["Date"])
+
 # ✅ 날짜 슬라이더 (기본: 최근 1년)
 min_date = vix_data["Date"].min().date()
 max_date = vix_data["Date"].max().date()
@@ -33,10 +36,10 @@ start_date, end_date = st.slider(
 )
 
 
-# ✅ 선택된 날짜 범위로 필터링
+# ✅ 날짜 필터링
 filtered_data = vix_data[
-    (vix_data["Date"] >= pd.Timestamp(start_date)) &
-    (vix_data["Date"] <= pd.Timestamp(end_date))
+    (vix_data["Date"] >= pd.to_datetime(start_date)) &
+    (vix_data["Date"] <= pd.to_datetime(end_date))
 ]
 
 
