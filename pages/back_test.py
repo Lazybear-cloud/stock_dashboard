@@ -5,7 +5,7 @@ import plotly.express as px
 from datetime import datetime, date
 
 # 페이지 설정: wide 모드 활성화
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="📊 VIX 차트", page_icon="📉", layout="wide")
 
 # 스트림릿 웹 앱 제목
 st.title("Stock Data Viewer: SPY, QQQ, QLD, TQQQ")
