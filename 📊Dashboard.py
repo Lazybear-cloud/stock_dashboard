@@ -27,8 +27,8 @@ default_end = max_date
 # ✅ 날짜 슬라이더 (모두 date 타입)
 start_date, end_date = st.slider(
     "📅 표시할 날짜 범위 선택",
-   # min_value=min_date,
-    #max_value=max_date,
+    min_value=min_date,
+    max_value=max_date,
     value=(default_start, default_end),
     format="YYYY-MM-DD"
 )
@@ -37,6 +37,7 @@ start_date, end_date = st.slider(
 filtered_data = vix_data[
     (vix_data["Date"] >= start_date) & (vix_data["Date"] <= end_date)
 ]
+
 
 # ✅ 평균 및 최신 데이터 계산
 mean_value = filtered_data["Close"].mean()
