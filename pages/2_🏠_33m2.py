@@ -37,7 +37,7 @@ with col1:
     ]
 
     # 사용자가 선택할 수 있게 selectbox로 변경
-    condition_value1 = st.selectbox(f"'{column_name1}' 컬럼에서 검색할 조건을 선택하세요", 지역_리스트, key='val1')
+    condition_value1 = st.selectbox(f"'{column_name1}'에서 검색할 조건을 선택하세요", 지역_리스트, key='val1')
 
 # 두 번째 필터링 조건 (두 번째 열, '시' 기본값)
 with col2:
@@ -47,7 +47,7 @@ with col2:
     column_option2 = sorted(column_filtered_df1['시'].dropna().unique())
 
     # '지역' 컬럼에 대해 조건 값을 입력받음
-    condition_value2 = st.selectbox(f"'{column_name2}' 컬럼에서 검색할 조건을 선택하세요", column_option2)
+    condition_value2 = st.selectbox(f"'{column_name2}'에서 검색할 조건을 선택하세요", column_option2)
 
 # 세 번째 필터링 조건 (세 번째 열, '구' 기본값)
 with col3:
@@ -57,7 +57,7 @@ with col3:
     column_option3 = ["전체"] + sorted(column_filtered_df2['구'].dropna().unique())
     
     # '지역' 컬럼에 대해 조건 값을 입력받음
-    condition_value3 = st.selectbox(f"'{column_name3}' 컬럼에서 검색할 조건을 선택하세요", column_option3)
+    condition_value3 = st.selectbox(f"'{column_name3}'에서 검색할 조건을 선택하세요", column_option3)
 
 
 # 데이터 검색 버튼
