@@ -5,7 +5,7 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 # 웹페이지 제목
-st.title("Lazy._.bear & 성공가도 33m2 물건 검색기")
+st.title("33m2 물건 검색기")
 
 # GitHub에 있는 엑셀 파일의 raw 경로
 url = '33m2_data.xlsx'
