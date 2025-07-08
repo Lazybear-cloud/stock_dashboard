@@ -5,3 +5,5 @@ matplotlib
 requests
 beautifulsoup4
 plotly
+openpyxl
+numpy
