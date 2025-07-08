@@ -8,7 +8,7 @@ from datetime import datetime, date
 st.set_page_config(page_title="📊 VIX 차트", page_icon="📉", layout="wide")
 
 # 스트림릿 웹 앱 제목
-st.title("Stock Data Viewer: SPY, QQQ, QLD, TQQQ")
+st.title("Stock Back Test")
 
 # 종목 리스트
 tickers = ["SPY", "QQQ", "QLD", "TQQQ"]
